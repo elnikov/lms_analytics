@@ -4,8 +4,8 @@ class CreateEscrowNfts < ActiveRecord::Migration[7.0]
       t.string :mongo_id
       t.string :lms_id
       t.json :nft, default: {}
-      t.string :name
-      t.string :url
+      t.string :nft_number
+      t.string :image_url
       t.string :nft_address
       t.decimal :price, precision: 40, scale: 20
       t.string :seller
@@ -15,6 +15,7 @@ class CreateEscrowNfts < ActiveRecord::Migration[7.0]
       t.datetime :escrow_date
       t.integer :kind
       t.string :human_name
+      t.integer :status
 
       t.timestamps
     end

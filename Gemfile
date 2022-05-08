@@ -74,3 +74,7 @@ end
 gem "httparty", "~> 0.20.0"
 
 gem "byebug", "~> 11.1"
+
+gem "pg", "~> 1.3"
+
+gem "semver", "~> 1.0"

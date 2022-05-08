@@ -18,8 +18,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_08_072532) do
     t.string "mongo_id"
     t.string "lms_id"
     t.json "nft", default: {}
-    t.string "name"
-    t.string "url"
+    t.string "nft_number"
+    t.string "image_url"
     t.string "nft_address"
     t.decimal "price", precision: 40, scale: 20
     t.string "seller"
@@ -29,6 +29,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_08_072532) do
     t.datetime "escrow_date"
     t.integer "kind"
     t.string "human_name"
+    t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

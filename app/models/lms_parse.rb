@@ -1,4 +1,4 @@
-class LmsParse
+class LMSParse
 
   def initialize
     @items = []
@@ -6,10 +6,10 @@ class LmsParse
 
   def total_pages
     @total_pages ||= begin
-                       response = request(url)
+                       response = request(url(page: 1))
                        per_page = response['items'].count.to_f
                        total_items = response['total']
-                       (total_items / per_page).ceil
+                       (total_items / per_page).ceil+1
                      end
   end
 
@@ -24,7 +24,7 @@ class LmsParse
   private
 
   def request(request_url)
-    response = HTTParty.get(url)
+    response = HTTParty.get(request_url)
     response.parsed_response
   end
 
