@@ -4,12 +4,38 @@ class EscrowNFT < ApplicationRecord
   enum kind: [:lms]
   enum status: [:on_sale, :in_use]
 
+  enum rarity: {
+    zero: 0,
+    one: 1,
+    uncommon: 2,
+    rare: 3,
+    epic: 4,
+    legendary: 5
+  }
+
   def lms_url
     "https://market.letmespeak.org/#/escrow/#{lms_id}"
   end
 
   def rarity
+    attrs['rarity']
   end
+
+  def rarity_human
+    case rarity
+    when 2
+      'uncommon'
+    when 3
+      'rare'
+    when 4
+      'epic'
+    when 5
+      'legendary'
+    else
+      'unknown'
+    end
+  end
+
 
 
   def self.update_escrow
@@ -17,6 +43,12 @@ class EscrowNFT < ApplicationRecord
     items = LMSParse.new.parse
     items.each do |item|
       nft = EscrowNFT.find_or_initialize_by nft_number: item.dig('nft', 'details', 'name'), kind: :lms
+
+      attr = item.dig('nft', 'details', 'attributes')
+      attr.each do |at|
+        nft.attrs[at['trait_type']] = at['value']
+      end
+
       nft.mongo_id = item['_id']
       nft.lms_id = item['id']
       nft.nft = item['nft']
