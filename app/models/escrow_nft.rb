@@ -4,6 +4,13 @@ class EscrowNFT < ApplicationRecord
   enum kind: [:lms]
   enum status: [:on_sale, :in_use]
 
+  def lms_url
+    "https://market.letmespeak.org/#/escrow/#{lms_id}"
+  end
+
+  def rarity
+  end
+
 
   def self.update_escrow
     on_sales_id = []

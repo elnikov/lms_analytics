@@ -1,0 +1,33 @@
+
+.row.wrapper.border-bottom.white-bg.page-heading
+  .col-lg-9
+    h2 Let Me Speak NFT
+    / ol.breadcrumb
+    /   li
+    /     a href=("#{url_for :controller => 'dashboards') action='dashboard_1'}"  Home
+    /   li.active
+    /     strong Widgets
+
+.container-fluid
+  .col-12
+    .ibox.float-e-margin
+      .ibox-title NFTs
+      .ibox-content
+        table.table.table-hover.table-mail
+          thead
+            tr
+              th image
+              th status
+              th nft_number
+              th human_name
+              th price
+              th escrow_date
+          tbody
+            -@nfts.each do |nft|
+              tr
+                td =image_tag nft.image_url, size: '60x60'
+                td =nft.status
+                td =link_to nft.nft_number, nft.lms_url, target: '_blank'
+                td =nft.human_name
+                td =nft.price
+                td =nft.escrow_date

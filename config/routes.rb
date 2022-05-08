@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'nft/index'
+  get 'nft/show'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -7,6 +9,8 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root to: 'dashboards#dashboard'
+
+  resources :nfts, only: [:index, :show]
 
   # All routes
   get "dashboards/dashboard_1"

@@ -14,6 +14,7 @@
 ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.acronym "RESTful"
   inflect.acronym "NFT"
+  inflect.acronym "NFTs"
   inflect.acronym "LMS"
   inflect.acronym "ETH"
   inflect.acronym "SOL"
