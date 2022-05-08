@@ -1,4 +1,6 @@
 class EscrowNFT < ApplicationRecord
+  include HistoryMethod
+
   enum kind: [:lms]
   enum status: [:on_sale, :in_use]
 
@@ -16,7 +18,7 @@ class EscrowNFT < ApplicationRecord
       nft.mint = item['mint']
       nft.nft_vault = item['nftVault']
       nft.seller_receive_account = item['sellerReceiveAccount']
-      nft.escrow_date = Time.at item['date']
+      nft.escrow_date = Time.at(item['date']).to_datetime
       nft.human_name = item.dig('nft', 'details', 'attributes').first['value']
       nft.image_url = item.dig('nft', 'details', 'image')
       nft.status = :on_sale
