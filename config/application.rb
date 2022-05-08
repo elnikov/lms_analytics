@@ -20,3 +20,7 @@ module LmsAnalytics
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end
+
+def r
+  reload!
+end
