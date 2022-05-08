@@ -12,11 +12,27 @@ gem "sprockets-rails"
 # Use sqlite3 as the database for Active Record
 gem "sqlite3", "~> 1.4"
 
+gem 'simple_form'
+gem 'slim-rails'
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
+gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate-bootstrap'
+gem 'figaro'
+gem 'friendly_id'
+gem 'devise'
+gem 'ransack'
+gem 'bootstrap-sass'
+gem 'rails_12factor', group: :production
+gem 'font-awesome-rails'
+
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
 
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "importmap-rails"
+
+gem 'sass-rails'
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
