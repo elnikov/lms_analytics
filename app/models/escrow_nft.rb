@@ -36,6 +36,43 @@ class EscrowNFT < ApplicationRecord
     end
   end
 
+  def simple_dayleft
+    formula.try(:[], 'simple_dayleft')
+  end
+
+  def method_missing(method, *args, &block)
+    attrs[method.to_s]
+  end
+
+  before_save :update_formulas
+
+  def update_formulas
+    update_simple_dayleft
+  end
+
+  def update_simple_dayleft
+    formula['simple_dayleft'] = ((visa_left * max_daily_earning) - price.to_i).round(1)
+  end
+
+  def visa_human
+    "#{visa_left}/#{visa_total}"
+  end
+
+  def max_daily_earning
+    lstars = case rarity
+             when 2
+               105
+             when 3
+               232
+             when 4
+               427
+             when 5
+               1136
+             else
+               0
+             end
+    lstars * 0.02
+  end
 
 
   def self.update_escrow

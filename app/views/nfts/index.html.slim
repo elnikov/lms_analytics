@@ -16,8 +16,12 @@
         table.table.table-hover.table-mail
           thead
             tr
+              th id
               th image
+              th simple_dayleft
               th rarity
+              th invites_left
+              th visa_human
               th status
               th nft_number
               th human_name
@@ -26,8 +30,12 @@
           tbody
             -@nfts.each do |nft|
               tr
+                td =nft.id
                 td =image_tag nft.image_url, size: '60x60'
+                td =nft.simple_dayleft
                 td =nft.rarity_human
+                td =nft.invites_left
+                td =nft.visa_human
                 td =nft.status
                 td =link_to nft.nft_number, nft.lms_url, target: '_blank'
                 td =nft.human_name
